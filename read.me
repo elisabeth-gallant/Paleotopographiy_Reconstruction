@@ -1,0 +1,31 @@
+Author: Elisabeth Gallant
+Date: 30 December, 2019
+
+These codes allow for the modelling of paleotopography for conic featurs (essentially, they can fill in topographic gaps to re-construct conic features). These codes are in the process of being updated, so please be patient. 
+
+To run the code successfully:
+
+1: run terrain_extraction.m - A screen will pop up and ask you to input DEM and hillshade files. I have provided you with examples from Momotombo volcano, obtained in 2012 and 2017. The resolution for these DEMs is 5m. 
+
+A: load the DEM file and then the Hillshade file. 
+
+B: decide which features you'd like to mask out in order to reconstruct the topography. In our example, we want to reconstruct the edifice of Momotombo's northeast flank. The channel and lower-flank levees make this reconstruction difficult, so we need to mask them out to remove their influence on the resconstruction process. We do this by selecting an Omit Length (one half of the width of the channel and levee). We use a value of 125 (our usints are meters).
+
+C: decide the width of the feature you'd like to reconstruct. In our case, we want to essentially "fill in" the lava flow channel (we use a value of 150).
+
+D: We select the number of fit samples that run cross-channel (60 samples) and the length of our profile (650 in our case) 
+
+E: Trace the length of the feature you'd like to mask out (we use the NE flank channel for this example). You trace by clicking along the path and then pressing entre. A red line should appear on the feature.
+
+D: Click 'get profile' in order to calculate the cross channel profiles.
+
+
+
+2: To plot profiles, run plot_profiles.m by typing the following:
+
+plot_profiles(profiles, DEMcont)
+
+- figures of topographic profiles, corrected for curvature, should then pop up on your screen and save automatically into the working directory
+
+
+3: To obtain the Hardness variables described in Gallant et al, in review (Momotombo erosion paper), run depth_fit.m --> you will need to input your own values for the time of the eruption and lava flow thickness for your own eruption -- we have include assumed ranges of values for Momotombo's 1905 eruption.
